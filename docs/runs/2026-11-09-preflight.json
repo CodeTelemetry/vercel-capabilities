@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "fixtureRepository": "CodeTelemetry/vercel-capabilities",
+  "fixtureHead": "060a34abdcf0b674a994908f612e18d89385a099",
+  "vercelCliVersion": "65.14.0",
+  "teamPlan": "hobby",
+  "cliAuthenticated": true,
+  "githubAppInstalledForFixture": true,
+  "linkedProjectCreated": false,
+  "ciEnable": {
+    "exitCode": 1,
+    "cliReason": "conflict",
+    "cliDiagnosis": "multiple_connected_repositories",
+    "underlyingHttpStatus": 409,
+    "underlyingDiagnosis": "private_organization_repository_requires_pro",
+    "accepted": false
+  },
+  "ciSettingsAfterAttempt": { "ciEnabled": false },
+  "ciList": { "exitCode": 0, "runCount": 0, "nextCursor": null },
+  "securityReviewList": {
+    "exitCode": 1,
+    "reason": "not_found",
+    "diagnosis": "security_review_not_enabled",
+    "findingsRetrieved": false
+  },
+  "cloudExecutionVerified": false,
+  "acceptance": "blocked_by_plan"
+}
