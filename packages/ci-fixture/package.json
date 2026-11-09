@@ -1,0 +1,10 @@
+{
+  "name": "@codetelemetry/vercel-ci-fixture",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-timeout=5000",
+    "manual-only": "node -e \"console.log('This untagged task is intentionally not scheduled in Vercel CI')\""
+  }
+}
