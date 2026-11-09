@@ -29,6 +29,15 @@ proof that Vercel CI ran. An AI Security Review is not proof of remediation.
 Keep raw CLI responses, credentials, and security finding details outside Git.
 Only reviewed metadata and sanitized aggregate results belong in `docs/runs/`.
 
+The check collector reads only this fixture repository on github.com. Run
+`node scripts/collect-checks.mjs <full-sha>` for machine-readable JSON. Its
+version 2 output omits provider links, external IDs, annotations and raw errors.
+It reports one page of up to 100 check runs, with `filter=all`. `pageComplete`
+describes that bounded result, while `historyComplete: null` leaves historical
+coverage unknown. GitHub retention and check-suite limits still apply.
+Generated output can contain provider-controlled check names and identifiers;
+keep it in ignored `artifacts/` and review it before sharing.
+
 Vercel CLI 65.14.0 and Turborepo 2.11.10 were selected on 2026-11-09.
 The CLI is an external operator tool; it is not bundled into the fixture.
 

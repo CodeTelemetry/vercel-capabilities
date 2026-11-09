@@ -34,7 +34,9 @@ Sources checked on 2026-11-09:
    bounded JSON: `vercel ci ls --scope <team> --git-branch <branch> --commit <sha>
    --limit 20 --json`, followed by `vercel ci inspect <run> --scope <team> --json`.
 5. Run `npm run collect:checks -- <full-sha>` to compare GitHub App ID, check
-   name, exact SHA, outcome, and external ID with the Vercel invocation. A
+   name, exact SHA and outcome with the Vercel invocation. The helper omits
+   opaque provider IDs, links and annotations; inspect any necessary join fields
+   separately in your authorized local session, and keep them out of public evidence. A
    deployment or green aggregate does not prove that the test task executed.
 6. Change expected sum to 7 on a fixture branch. Confirm a failed task and check
    at that exact SHA. Restore 6 in a later commit and confirm the earlier proof

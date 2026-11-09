@@ -8,7 +8,7 @@
   "engines": { "node": ">=24 <25" },
   "workspaces": ["packages/*"],
   "scripts": {
-    "test": "turbo run test",
+    "test": "node --test --test-timeout=20000 scripts/*.test.mjs && turbo run test",
     "ci": "turbo run test --summarize",
     "collect:checks": "node scripts/collect-checks.mjs"
   },

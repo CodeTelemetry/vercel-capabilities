@@ -5,5 +5,9 @@ node_modules/
 !.env.example
 artifacts/
 raw-evidence/
+checks*.json
+*.pem
+*.key
+.npmrc
 *.log
 dist/
