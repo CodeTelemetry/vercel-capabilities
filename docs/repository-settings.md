@@ -40,6 +40,10 @@ from the GitHub Actions App, an up-to-date branch, linear history and resolved
 review conversations. It applies to administrators and disallows force pushes
 and branch deletion. There is no mandatory independent reviewer because the
 repository currently has one maintainer; the required checks still apply.
+The API schema also requires the deprecated `contexts` array. It is explicitly
+empty because the two App-bound entries in `checks` define the required jobs.
+The payload was validated against GitHub's official 2022-11-28 OpenAPI request
+schema (source blob `b6ae140f4293e24fbdc22d6d3aed23ac7fb9df5c`).
 
 Branch protection for a private organization repository requires an eligible
 GitHub plan. If the API returns HTTP 403 for this reason, the JSON policy is
