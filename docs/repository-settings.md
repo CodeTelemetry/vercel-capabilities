@@ -15,8 +15,7 @@ The repository-level Actions policy allows only the two exact action revisions
 used by this workflow and requires full-SHA pins. Update the workflow and
 allowlist together when upgrading an Action.
 Repository merge settings allow squash merges only, disable auto-merge and
-delete merged branches automatically. These settings apply even while branch
-protection is unavailable on the current plan.
+delete merged branches automatically.
 
 ## Apply settings
 
@@ -40,16 +39,14 @@ from the GitHub Actions App, an up-to-date branch, linear history and resolved
 review conversations. It applies to administrators and disallows force pushes
 and branch deletion. There is no mandatory independent reviewer because the
 repository currently has one maintainer; the required checks still apply.
-The API schema also requires the deprecated `contexts` array. It is explicitly
-empty because the two App-bound entries in `checks` define the required jobs.
-The payload was validated against GitHub's official 2022-11-28 OpenAPI request
-schema (source blob `b6ae140f4293e24fbdc22d6d3aed23ac7fb9df5c`).
+The payload uses the App-bound `checks` entries without the deprecated `contexts`
+field. Sending both fields was rejected with HTTP 422; the checked-in payload
+was accepted by GitHub and the returned policy binds both jobs to App ID 15368.
 
-Branch protection for a private organization repository requires an eligible
-GitHub plan. If the API returns HTTP 403 for this reason, the JSON policy is
-prepared but enforcement is not active. After publication or a GitHub plan
-change, reapply it and verify the server's actual state. A committed policy file
-does not enforce anything by itself.
+Branch protection became available when this repository was made public on
+2026-11-10. The policy above is active, including administrator enforcement.
+Reapply it after changing the payload and verify the server's actual state.
+A committed policy file does not enforce anything by itself.
 
 ```sh
 gh api repos/CodeTelemetry/vercel-capabilities \
@@ -61,4 +58,5 @@ gh api repos/CodeTelemetry/vercel-capabilities/branches/main/protection
 ```
 
 GitHub CI validates the reusable fixture independently of Vercel. The live Vercel
-acceptance status remains documented in the [dated run record](runs/2026-11-09.md).
+acceptance status is documented in the [latest configuration result](runs/2026-11-10.md)
+and the [initial run record](runs/2026-11-09.md).
