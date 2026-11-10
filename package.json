@@ -2,6 +2,7 @@
   "name": "vercel-capabilities",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Isolated, reproducible Vercel capability acceptance fixtures",
   "type": "module",
   "packageManager": "npm@11.19.1",

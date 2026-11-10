@@ -14,12 +14,17 @@ finding should be handled locally; avoid posting secret values in issues or logs
 The repository-level Actions policy allows only the two exact action revisions
 used by this workflow and requires full-SHA pins. Update the workflow and
 allowlist together when upgrading an Action.
+Repository merge settings allow squash merges only, disable auto-merge and
+delete merged branches automatically. These settings apply even while branch
+protection is unavailable on the current plan.
 
 ## Apply settings
 
 Run from this repository's root with an authorized GitHub administrator session:
 
 ```sh
+gh api --method PATCH repos/CodeTelemetry/vercel-capabilities \
+  --input .github/repository-settings.json
 gh api --method PUT repos/CodeTelemetry/vercel-capabilities/actions/permissions \
   --input .github/actions-permissions.json
 gh api --method PUT repos/CodeTelemetry/vercel-capabilities/actions/permissions/selected-actions \
@@ -43,6 +48,8 @@ change, reapply it and verify the server's actual state. A committed policy file
 does not enforce anything by itself.
 
 ```sh
+gh api repos/CodeTelemetry/vercel-capabilities \
+  --jq '{allow_merge_commit,allow_rebase_merge,allow_squash_merge,allow_auto_merge,delete_branch_on_merge}'
 gh api repos/CodeTelemetry/vercel-capabilities/actions/permissions
 gh api repos/CodeTelemetry/vercel-capabilities/actions/permissions/selected-actions
 gh api repos/CodeTelemetry/vercel-capabilities/actions/permissions/workflow

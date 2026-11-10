@@ -2,6 +2,7 @@
   "name": "@codetelemetry/vercel-ci-fixture",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "test": "node --test --test-timeout=5000",
