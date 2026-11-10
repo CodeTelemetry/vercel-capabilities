@@ -5,6 +5,10 @@
 Use only this isolated repository and an explicitly selected Vercel team.
 Never import private application source or modify production gate policy.
 Use the existing team plan; an upgrade or paid subscription is a separate owner decision.
+This repository is public. On 2026-11-10, Vercel's authenticated settings API
+rejected CI enablement with HTTP 409 because public repositories are unsupported.
+GitHub Actions supplies the required checks; Vercel CI remains disabled.
+See the [latest configuration result](runs/2026-11-10.md).
 Live testing on 2026-11-09 confirmed that a private GitHub organization repository
 cannot enable CI on Hobby: the settings API rejects it with HTTP 409 and requires
 Pro. Hobby's included CI minutes do not establish eligibility for this repository.
@@ -23,9 +27,10 @@ Sources checked on 2026-11-09:
 ## CI
 
 1. Run `npm ci` and `npm run ci` locally. Verify all five assertions pass.
-2. Authenticate Vercel CLI 65.14.0, select the intended team, and verify GitHub App
-   access to this fixture repository. Start without a linked Vercel project to
-   test the documented standalone private-repository mode.
+2. Check [Vercel CI's current limitations](https://vercel.com/docs/ci#limitations).
+   If public repositories remain unsupported, record the blocker and stop live
+   CI acceptance. Once supported, authenticate Vercel CLI, select the intended
+   team, and verify GitHub App access to this fixture repository.
 3. In this clone, run `vercel ci enable --scope <team> --remote origin --json`.
    Record actual eligibility errors; do not infer eligibility from the docs.
    CLI 65.14.0 can mislabel a plan-related HTTP 409 as a duplicate-repository

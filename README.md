@@ -1,7 +1,6 @@
 # Vercel capabilities
 
-An isolated CodeTelemetry repository for reproducible Vercel capability tests.
-The repository starts private and is intended for eventual public release.
+An isolated public CodeTelemetry repository for reproducible Vercel capability tests.
 All source was written independently for this fixture. It contains no private
 CodeTelemetry service implementation, customer data, or production credentials.
 Every package is private and cannot be published to npm.
@@ -47,13 +46,14 @@ This project uses the [MIT License](LICENSE). If your company profits from this
 code, please [let CodeTelemetry know](COMMERCIAL-USE.md). Notification is a
 voluntary request and adds no conditions to the license.
 
-## CI and publication
+## CI
 
 GitHub Actions runs the fixture and adversarial tests plus a full-history secret
 scan on pushes to `main` and pull requests. See [repository settings](docs/repository-settings.md)
-for the pinned Actions policy and the prepared branch-protection configuration.
+for the pinned Actions policy and enforced branch-protection configuration.
 
-Before changing GitHub visibility, inspect the complete history for credentials,
-private data, and finding details. Standalone Vercel CI currently supports private
-GitHub repositories; publishing this repository may require a different CI setup.
-The repository remains private until publication is explicitly requested.
+GitHub Actions provides the required CI checks. Vercel CI does not currently
+support public repositories: the authenticated enablement attempt returned
+HTTP 409 on 2026-11-10. See the [live configuration result](docs/runs/2026-11-10.md).
+The Turborepo tasks remain configured for Vercel CI when public-repository support
+becomes available.
